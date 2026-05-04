@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  background: #f6f4ef;
+}
+
+.ri {
+  line-height: 1;
+}
+
+.page-shell {
+  @apply min-h-screen bg-base-200 text-neutral;
+}
+
+.surface {
+  @apply rounded-box border border-base-300 bg-base-100 shadow-sm;
+}
+
+.metric-card {
+  @apply surface p-5;
+}
+
+.field-label {
+  @apply label py-1 text-xs font-bold uppercase tracking-wide text-neutral/60;
+}
+
+.form-input {
+  @apply input input-bordered w-full bg-white;
+}
+
+.form-select {
+  @apply select select-bordered w-full bg-white;
+}
+
+.form-textarea {
+  @apply textarea textarea-bordered w-full bg-white;
+}
