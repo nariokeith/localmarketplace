@@ -37,7 +37,7 @@ services:
     runtime: node
     plan: free
     rootDir: client
-    buildCommand: npm install && npm run build
+    buildCommand: npm ci && npm run build
     startCommand: npm run start:render
     envVars:
       - key: NODE_VERSION
