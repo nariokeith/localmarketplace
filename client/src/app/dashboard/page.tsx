@@ -10,7 +10,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { apiRequest, formatCurrency, type Product, type ProductStats } from '../../lib/api';
 
 export default function DashboardPage() {
-  const { token, user } = useAuth();
+  const { token } = useAuth();
   const [topProducts, setTopProducts] = useState<Product[]>([]);
   const [stats, setStats] = useState<ProductStats[]>([]);
   const [protectedCount, setProtectedCount] = useState(0);
@@ -48,11 +48,6 @@ export default function DashboardPage() {
 
       <section className="mb-6 grid gap-4 md:grid-cols-3">
         <div className="metric-card">
-          <p className="text-sm font-bold uppercase text-neutral/60">Signed In</p>
-          <h2 className="mt-2 text-2xl font-black">{user?.name}</h2>
-          <p className="text-sm text-neutral/60">{user?.role} account</p>
-        </div>
-        <div className="metric-card">
           <p className="text-sm font-bold uppercase text-neutral/60">Visible Products</p>
           <h2 className="mt-2 text-3xl font-black">{protectedCount}</h2>
           <p className="text-sm text-neutral/60">Protected read endpoint</p>
@@ -61,6 +56,11 @@ export default function DashboardPage() {
           <p className="text-sm font-bold uppercase text-neutral/60">Categories</p>
           <h2 className="mt-2 text-3xl font-black">{stats.length}</h2>
           <p className="text-sm text-neutral/60">Aggregation groups</p>
+        </div>
+        <div className="metric-card">
+          <p className="text-sm font-bold uppercase text-neutral/60">Top Cheapest</p>
+          <h2 className="mt-2 text-3xl font-black">{topProducts.length}</h2>
+          <p className="text-sm text-neutral/60">Alias route results</p>
         </div>
       </section>
 
