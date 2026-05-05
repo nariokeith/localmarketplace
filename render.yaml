@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: express-local-marketplace-api
+    name: keith-express-local-marketplace-api
     runtime: node
     plan: free
     buildCommand: npm install
@@ -12,7 +12,7 @@ services:
       - key: NODE_ENV
         value: production
       - key: FRONTEND_URL
-        value: https://express-local-marketplace-web.onrender.com
+        value: https://keith-express-local-marketplace-web.onrender.com
       - key: DATABASE
         sync: false
       - key: DATABASE_PASSWORD
@@ -33,7 +33,7 @@ services:
         sync: false
 
   - type: web
-    name: express-local-marketplace-web
+    name: keith-express-local-marketplace-web
     runtime: node
     plan: free
     rootDir: client
@@ -45,6 +45,6 @@ services:
       - key: NODE_ENV
         value: production
       - key: NEXT_PUBLIC_API_BASE_URL
-        value: https://express-local-marketplace-api.onrender.com
+        value: https://keith-express-local-marketplace-api.onrender.com
       - key: API_BASE_URL
-        value: https://express-local-marketplace-api.onrender.com
+        value: https://keith-express-local-marketplace-api.onrender.com
