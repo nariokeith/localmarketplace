@@ -21,9 +21,10 @@ mongoose.connect(DB).then(() => {
 });
 
 const port = process.env.PORT || 3000;
+const host = process.env.HOST || "0.0.0.0";
 
-const server = app.listen(port, () => {
-  console.log(`App running on port ${port}...`);
+const server = app.listen(port, host, () => {
+  console.log(`App running on ${host}:${port}...`);
   console.log(`Environment: ${process.env.NODE_ENV}`);
 });
 
