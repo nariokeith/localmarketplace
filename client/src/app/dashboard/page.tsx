@@ -2,12 +2,12 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { AppShell } from '@/components/AppShell';
-import { PageHeader } from '@/components/PageHeader';
-import { StatusAlert } from '@/components/StatusAlert';
-import { StatsCards } from '@/components/StatsCards';
-import { useAuth } from '@/contexts/AuthContext';
-import { apiRequest, formatCurrency, type Product, type ProductStats } from '@/lib/api';
+import { AppShell } from '../../components/AppShell';
+import { PageHeader } from '../../components/PageHeader';
+import { StatusAlert } from '../../components/StatusAlert';
+import { StatsCards } from '../../components/StatsCards';
+import { useAuth } from '../../contexts/AuthContext';
+import { apiRequest, formatCurrency, type Product, type ProductStats } from '../../lib/api';
 
 export default function DashboardPage() {
   const { token, user } = useAuth();

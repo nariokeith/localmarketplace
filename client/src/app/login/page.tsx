@@ -2,9 +2,9 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { AuthCard } from '@/components/AuthCard';
-import { StatusAlert } from '@/components/StatusAlert';
-import { useAuth } from '@/contexts/AuthContext';
+import { AuthCard } from '../../components/AuthCard';
+import { StatusAlert } from '../../components/StatusAlert';
+import { useAuth } from '../../contexts/AuthContext';
 
 export default function LoginPage() {
   const router = useRouter();

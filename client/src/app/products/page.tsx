@@ -2,13 +2,13 @@
 
 import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
-import { AppShell } from '@/components/AppShell';
-import { PageHeader } from '@/components/PageHeader';
-import { ProductCard } from '@/components/ProductCard';
-import { ProductFilters, type ProductFilters as ProductFilterState } from '@/components/ProductFilters';
-import { StatusAlert } from '@/components/StatusAlert';
-import { useAuth } from '@/contexts/AuthContext';
-import { apiRequest, productId, type Product } from '@/lib/api';
+import { AppShell } from '../../components/AppShell';
+import { PageHeader } from '../../components/PageHeader';
+import { ProductCard } from '../../components/ProductCard';
+import { ProductFilters, type ProductFilters as ProductFilterState } from '../../components/ProductFilters';
+import { StatusAlert } from '../../components/StatusAlert';
+import { useAuth } from '../../contexts/AuthContext';
+import { apiRequest, productId, type Product } from '../../lib/api';
 
 const defaultFilters: ProductFilterState = {
   category: '',

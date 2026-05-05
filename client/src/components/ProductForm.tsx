@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { type Product, type ProductPayload } from '@/lib/api';
+import { type Product, type ProductPayload } from '../lib/api';
 import { StatusAlert } from './StatusAlert';
 
 const categories = ['Electronics', 'Clothes', 'Books', 'Food', 'Home', 'Services', 'Sports', 'Others'];

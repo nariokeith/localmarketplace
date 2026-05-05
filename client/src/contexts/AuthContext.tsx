@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { apiRequest, type User } from '@/lib/api';
+import { apiRequest, type User } from '../lib/api';
 
 type AuthContextValue = {
   token: string;

@@ -1,4 +1,4 @@
-import { formatCurrency, type ProductStats } from '@/lib/api';
+import { formatCurrency, type ProductStats } from '../lib/api';
 
 export function StatsCards({ stats }: { stats: ProductStats[] }) {
   if (!stats.length) {

@@ -2,12 +2,12 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { AppShell } from '@/components/AppShell';
-import { PageHeader } from '@/components/PageHeader';
-import { ProductForm } from '@/components/ProductForm';
-import { StatusAlert } from '@/components/StatusAlert';
-import { useAuth } from '@/contexts/AuthContext';
-import { apiRequest, type Product, type ProductPayload } from '@/lib/api';
+import { AppShell } from '../../../../components/AppShell';
+import { PageHeader } from '../../../../components/PageHeader';
+import { ProductForm } from '../../../../components/ProductForm';
+import { StatusAlert } from '../../../../components/StatusAlert';
+import { useAuth } from '../../../../contexts/AuthContext';
+import { apiRequest, type Product, type ProductPayload } from '../../../../lib/api';
 
 export function EditProductClient({ id }: { id: string }) {
   const router = useRouter();

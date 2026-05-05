@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { AppShell } from '@/components/AppShell';
-import { PageHeader } from '@/components/PageHeader';
-import { StatsCards } from '@/components/StatsCards';
-import { StatusAlert } from '@/components/StatusAlert';
-import { apiRequest, formatCurrency, type Product, type ProductStats } from '@/lib/api';
+import { AppShell } from '../../components/AppShell';
+import { PageHeader } from '../../components/PageHeader';
+import { StatsCards } from '../../components/StatsCards';
+import { StatusAlert } from '../../components/StatusAlert';
+import { apiRequest, formatCurrency, type Product, type ProductStats } from '../../lib/api';
 
 export default function StatsPage() {
   const [stats, setStats] = useState<ProductStats[]>([]);

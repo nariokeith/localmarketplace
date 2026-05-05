@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
-import { formatCurrency, productId, type Product } from '@/lib/api';
+import { formatCurrency, productId, type Product } from '../lib/api';
 
 type ProductCardProps = {
   product: Product;

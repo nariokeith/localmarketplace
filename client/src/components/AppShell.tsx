@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { ArrowRightOnRectangleIcon, Bars3Icon } from '@heroicons/react/24/outline';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { RouteGuard } from './RouteGuard';
 
 const navigation = [
