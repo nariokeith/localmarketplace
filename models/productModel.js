@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "A product must have a name"],
-        unique: true, // Added to test duplicate database fields
+        unique: true,
         trim: true,
         minlength: [3, "A product name must have at least 3 characters"],
         maxlength: [80, "A product name must have 80 characters or less"]

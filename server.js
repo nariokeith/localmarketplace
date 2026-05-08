@@ -43,7 +43,6 @@ const server = app.listen(port, host, () => {
   console.log(`Environment: ${process.env.NODE_ENV}`);
 });
 
-// Handle Unhandled Rejections (At the bottom)
 process.on('unhandledRejection', err => {
   console.log('UNHANDLED REJECTION! 💥 Shutting down...');
   console.log(err.name, err.message);

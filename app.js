@@ -18,8 +18,7 @@ const allowedOrigins = (process.env.FRONTEND_URL || 'http://localhost:3001')
   .map(origin => origin.trim())
   .filter(Boolean);
 
-// 1) GLOBAL SECURITY MIDDLEWARES
-// Set security HTTP headers
+
 app.use(helmet());
 
 app.use((req, res, next) => {
@@ -41,30 +40,24 @@ app.use((req, res, next) => {
   next();
 });
 
-// Development logging
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-// Rate limiting (Limits requests from same IP)
 const limiter = rateLimit({
-  max: 100, // Allow 100 requests per hour
+  max: 100,
   windowMs: 60 * 60 * 1000, 
   message: 'Too many requests from this IP, please try again in an hour!'
 });
 app.use('/api', limiter);
 
-// Body parser, reading data from body into req.body. Also cookie parser.
 app.use(express.json({ limit: '10kb' }));
 app.use(cookieParser());
 
-// Data sanitization against NoSQL query injection
 app.use(mongoSanitize());
 
-// Data sanitization against XSS
 app.use(xss());
 
-// Prevent parameter pollution
 app.use(hpp({
   whitelist: [
     'price', 'priceDiscount', 'category', 'seller', 'name', 'postedDate'
@@ -80,16 +73,13 @@ app.get("/", (req, res) => {
   });
 });
 
-// 2) ROUTES
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/users", userRouter);
 
-// Add 404 Not Found Errors Handler for undefined routes
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
-// Global Error Handling Middleware
 app.use(globalErrorHandler);
 
 module.exports = app;

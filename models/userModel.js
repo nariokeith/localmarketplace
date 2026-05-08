@@ -46,33 +46,25 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-// FIX 1: Removed 'next' parameter and next() call
-// Encrypt password before saving
 userSchema.pre('save', async function() {
   if (!this.isModified('password')) return;
   this.password = await bcrypt.hash(this.password, 12);
-  this.passwordConfirm = undefined; // Do not persist in DB
+  this.passwordConfirm = undefined;
 });
 
-// FIX 2: Removed 'next' parameter and next() call
-// Update passwordChangedAt property
 userSchema.pre('save', function() {
   if (!this.isModified('password') || this.isNew) return;
   this.passwordChangedAt = Date.now() - 1000; 
 });
 
-// FIX 3: Removed 'next' parameter and next() call
-// Filter out inactive users on queries
 userSchema.pre(/^find/, function() {
   this.find({ active: { $ne: false } });
 });
 
-// Instance method to check password
 userSchema.methods.correctPassword = async function(candidatePassword, userPassword) {
   return await bcrypt.compare(candidatePassword, userPassword);
 };
 
-// Check if user changed password after token was issued
 userSchema.methods.changedPasswordAfter = function(JWTTimestamp) {
   if (this.passwordChangedAt) {
     const changedTimestamp = parseInt(this.passwordChangedAt.getTime() / 1000, 10);
@@ -81,7 +73,6 @@ userSchema.methods.changedPasswordAfter = function(JWTTimestamp) {
   return false;
 };
 
-// Generate password reset token
 userSchema.methods.createPasswordResetToken = function() {
   const resetToken = crypto.randomBytes(32).toString('hex');
   this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
