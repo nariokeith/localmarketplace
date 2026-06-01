@@ -6,6 +6,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
+const path = require("path");
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -64,20 +65,17 @@ app.use(hpp({
   ]
 }));
 
-app.get("/", (req, res) => {
-  res.status(200).json({
-    status: "success",
-    message: "Local Marketplace API is running",
-    frontend: process.env.FRONTEND_URL || "http://localhost:3001",
-    documentation: "/api/v1/products"
-  });
-});
-
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/users", userRouter);
 
+app.use(express.static(path.join(__dirname, 'client/out')));
+
 app.all('*', (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+  if (req.originalUrl.startsWith('/api')) {
+    next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+  } else {
+    res.sendFile(path.join(__dirname, 'client/out/index.html'));
+  }
 });
 
 app.use(globalErrorHandler);
